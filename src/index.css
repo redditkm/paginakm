@@ -1,0 +1,81 @@
+/* =======================
+   TAILWIND BASE
+   ======================= */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =======================
+   ANIMACIÓN SCROLL
+   ======================= */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 18s linear infinite;
+}
+
+/* =======================
+   CORRECCIÓN GENERAL
+   ======================= */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* =======================
+   BODY (EVITA CONFLICTOS DE VITE)
+   ======================= */
+body {
+  display: block;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 16px; /* desktop base */
+}
+
+/* =======================
+   ROOT
+   ======================= */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* =======================
+   MODAL – BLOQUEO SCROLL
+   ======================= */
+body.modal-open,
+html.modal-open {
+  overflow: hidden !important;
+  touch-action: none !important;
+}
+
+/* =======================
+   RESPONSIVE – TABLETS
+   ======================= */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+/* =======================
+   RESPONSIVE – CELULARES
+   ======================= */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px; /* evita texto gigante */
+  }
+}

@@ -1,0 +1,56 @@
+/* Estilos comunes overlays estacionales (canvas-centered) */
+.seasonal-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none; /* no interfiere con clics */
+  z-index: 9999;
+  overflow: visible;
+  mix-blend-mode: normal;
+}
+
+/* Canvas clase para estilos adicionales */
+/* z-index reducido para que la UI (navbar, botones, modals) queden por encima del canvas de nieve */
+.christmas-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5; /* BAJO: botones y navbar con z-50/z-10 estarán por encima */
+  image-rendering: optimizeQuality;
+  will-change: transform, opacity;
+  /* Evitar repaints innecesarios: promote layer */
+  transform: translateZ(0);
+}
+
+/* Si quieres forzar que el video esté en su propia capa compositing, aplica .hero-video al <video> */
+.hero-video {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity;
+  contain: paint;
+}
+
+/* Keep legacy rules for DOM-based version in case you fall back */
+.snow-flake-div {
+  will-change: transform, opacity;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  position: absolute;
+  transform: translate3d(0,0,0);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.05s linear;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
+  box-sizing: border-box;
+}
+
+/* Mobile tweaks */
+@media (max-width: 640px) {
+  .christmas-canvas { image-rendering: auto; }
+  .snow-flake-div { filter: none; }
+}
